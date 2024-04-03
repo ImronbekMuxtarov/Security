@@ -1,0 +1,35 @@
+spring:
+  application:
+      name : SecurityChains
+  datasource:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/security
+        username: postgres
+        password: 1234asdf
+  jpa:
+          hibernate:
+            ddl-auto: update
+          show-sql: true
+
+  cache:
+     type:redis
+  data:
+      redis:
+        host: localhost
+        port: 6379
+
+
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    port: 587
+    username: imuxtarov2009@gmail.com
+    password: aznotaakklekjzzw
+    protocol: smtp
+    test-connection: false
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+              enable: true
