@@ -1,6 +1,7 @@
 package com.example.securitychains.repository;
 
-import com.example.securitychains.entity.UserToken;
+import com.example.securitychains.RoleName;
+import com.example.securitychains.entity.Roles;
 import com.example.securitychains.entity.Users;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -9,25 +10,29 @@ import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.util.Optional;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-class UserTokenRepositoryTest {
+class UserRepositoryTest {
 
     @Autowired
-    private UserTokenRepository userTokenRepository;
+    private UserRepository userRepository;
 
     @Test
-    void findUserTokenByToken() {
-        String token = "ulgurmadim token olishga ";
-        UserToken userToken = userTokenRepository.findUserTokenByToken(token).orElse(null);
-        Assertions.assertNotNull(userToken, "it is null");
-    }
-
-    @Test
-    void deleteByUsername() {
+    void findByUsername() {
         String username = "imronbekm";
-        userTokenRepository.deleteByUsername(username);
+        Users find = userRepository.findByUsername(username).orElse(null);
+        Assertions.assertNotNull(find);
+//        Users user = Users.builder()
+//                .username("username")
+//                .password("password")
+//                .first_name("first name")
+//                .last_name("last name")
+//                .roles(Set.of(new Roles(RoleName.ROLE_USER)))
+//                .build();
     }
 }
